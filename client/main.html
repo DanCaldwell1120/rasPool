@@ -1,0 +1,101 @@
+<head>
+  <title>rasPool</title>
+</head>
+
+<body>
+
+<div class="TitleContainer">
+     {{> Title}}
+</div>
+
+<div class="RecircPumpContainer">
+    {{> RecircPump}}
+</div>
+
+<div class="BoosterPumpContainer">
+  {{> BoosterPump}}
+</div>
+
+<div class="AddWaterContainer">
+	{{> AddWater}}
+</div>
+
+<div class="PoolLightContainer">
+  {{> PoolLight}}
+</div>
+
+<div class="SaltCell">
+  {{> SaltCell}}
+</div>
+
+<div class="StatusInfoContainer">
+  <h1> Status </h1>
+  <p>Pool Temp:   75F</p>
+  <p>Air Temp:    82F</p>
+  <p>Salt Level:  3200ppm</p>
+</div>
+
+<div class="PoolPicContainer">
+	<img src="images/poolPic.jpg" alt="poolPic">
+</div>
+
+</body>
+
+<template name="Title">
+  <h2>RasPool</h2>
+  <div class="titular">
+    <p id="sysTime">{{currentTime}}</p>
+  </div>
+</template>
+
+<template name="RecircPump">
+  <h1>Recirc Pump</h1>
+  <button id="js-Start">Start</button>
+  <input type="time" id="js-StartTime" name="newStartTime"> <br>
+  <img id="RPimg" src="images/greendot.png" alt="pump">
+  <button id="js-Stop">Stop</button>
+  <input type="time" value="" id="js-StopTime" name="newStopTime"> <br>
+</template>
+
+<template name="BoosterPump">
+  <h1>Booster Pump</h1>
+  <button id="js-Start">Start</button>
+  <input type="number" value="2" id="js-RunTime" name="RunTime"> Run Time (hrs)<br>
+  <button id="js-Stop">Stop</button>
+  <img id="BPimg" src="images/greendot.png" alt="pump">
+  <p id="BPtr">{{TimeRemaining}} mins remaining</p>
+</template>
+
+<template name="PoolLight">
+  <h1>Pool Light</h1>
+  <button id="js-On">On</button><br>
+  <button id="js-Off">Off</button>
+  <img id="PLimg" src="images/greendot.png" alt="light">
+</template>
+
+<template name="AddWater">
+  <h1>Add Water</h1>
+  <button id="js-Open">Start</button>
+  <input type="number" value="1" id="js-Inches" name="AddInches"> Inches to Add<br>
+  <button id="js-Shut">Stop</button>
+  <img id="AWimg" src="images/greendot.png" alt="valve">
+  <p id="AWtr">{{TimeRemaining}} mins remaining</p>
+</template>
+
+<template name="SaltCell">
+  <h1>Salt Cell</h1>
+  <div class="SaltCellSuperCl">
+    <p>Super Chlorinate</p>
+    <img id="SCimg" src="images/greendot.png" alt="Superchlorinate">
+    <button id="js-SCStart">Start</button>
+    <input type="number" value="24" id="js-SCtime" name="SCtime"> Hours<br>
+    <button id="js-SCStop">Stop</button>
+    <p id="SCtr">{{TimeRemaining}} hours remaining</p>
+  </div>
+  <div class="SaltCellOutput">
+    <p>Output</p>
+    <img id="OUTimg" src="images/greendot.png" alt="Output">
+    <input type="number" value="50" id="js-Percent" name="Percent"> Percent
+  </div>  
+  
+ </template>

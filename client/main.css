@@ -1,0 +1,203 @@
+body {
+	background-image: url("images/background5.jpg");
+	margin: auto;
+	width: 960px;
+}
+
+h1 {
+	font-size: 24px;
+	color: Black;
+	position: relative;
+	text-align: center;
+	margin: 5px 5px;
+}
+
+h2 {
+	font-size: 35px;
+	color: Black;
+	position: relative;
+	text-align: center;
+	margin: 0px;
+}
+
+p {
+	margin: 0px;
+	text-align: center;
+}
+
+
+
+#sysTime {
+	position: absolute;
+	left: 25px;
+	top: 17px;
+	font-size: 15px;	
+}
+
+#BPtr, #AWtr {
+	font-size: 17px;
+	color: Black;
+	display: none;
+}
+
+.TitleContainer {
+	width: 930px;
+	height: 40px;
+	background: #96b6ea;
+	margin: 2px 2px 2px 2px;
+	padding: 5px;
+	border-color: black;
+	border-style: solid;
+	float: left;
+	position: relative;
+}
+
+.RecircPumpContainer, .BoosterPumpContainer, .AddWaterContainer  {
+	width: 296px;
+	height: 125px;
+	background: #96b6ea;
+	margin: 2px 2px 2px 2px;
+	padding: 5px 5px 10px;
+	border-color: black;
+	border-style: solid;
+	float: left;
+	position: relative;
+}
+
+.PoolLightContainer, .StatusInfoContainer {
+	width: 201px;
+	height: 150px;
+	background: #96b6ea;
+	margin: 3px;
+	padding: 5px 5px 10px 10px;
+	border-color: black;
+	border-style: solid;
+	float: left;
+	position: relative;
+}
+
+#js-On, #js-Off {
+	position: relative;
+	left: 40px;
+}
+.SaltCell {
+	width: 470px;
+	height: 150px;
+	background: #96b6ea;
+	margin: 3px;
+	padding: 5px 5px 10px;
+	border-color: black;
+	border-style: solid;
+	float: left;
+	position: relative;
+}
+
+#RPimg, #BPimg, #PLimg, #AWimg, #SCimg, #OUTimg  {
+	width: 25px;
+	height: 25x;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	display: none;
+}
+
+#BPtr, #AWtr {
+	position: absolute;
+	left: 115px;
+	top: 87px;
+}
+
+#SCtr {
+	position: absolute;
+	left: 100px;
+	top: 73px;
+
+}
+
+.SaltCellOutput {
+	width: 145px;
+	height: 90px;
+	margin: 5px;
+	padding: 5px;
+	position: relative;
+	float: left;
+	border: solid 1px black;
+}
+
+#js-Percent {
+	margin: 25px 5px 5px 25px;
+}
+
+.SaltCellSuperCl {
+	width: 245px;
+	height: 90px;
+	margin: 5px 15px;
+	padding: 5px;
+	position: relative;
+	float: left;
+	border: solid 1px black;
+}
+
+#js-SCStart, #js-SCStop {
+	margin: 2px 0px;
+}
+
+#js-SCtime {
+	margin: 5px 5px 5px 20px;
+}
+
+.PoolPicContainer {
+	width: 936px;
+	height: 450px;
+	margin: 3px;
+	padding: 0px;
+	float: left;
+	position: relative;
+}
+
+.PoolPicContainer img {
+	width: 936px;
+	height: 450px;
+	margin: 0;
+	padding: 0;
+	border-color: black;
+	border-style: solid;
+}
+
+.StatusInfoContainer p {
+	padding: 0;
+	margin: 10px 10px;
+	text-align: left;
+	font-size: 18px;
+}
+
+input[type=submit] {
+	font-size: 32px;
+	margin: 5px;
+	width: 75px;
+	height: 40px;
+	border: hidden;
+}
+
+button {
+	width: 75px;
+	height: 30px;
+	margin: 5px 10px;
+	border-radius: 9px;
+	font-size: 15px;
+	background-color: white;
+}
+
+input[type=number] {
+	margin: 2px;
+	width: 45px;
+	height: 18px;
+	font-size: 15px;
+}
+
+input[type=time] {
+	margin: 2px;
+	height: 18px;
+	width: 125px;
+	font-size: 15px;
+}
