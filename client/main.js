@@ -13,6 +13,20 @@ const offGPIO = 1;
 
 //***************************************
 //
+//        Login
+//
+//***************************************
+
+Accounts.ui.config({
+     passwordSignupFields: "USERNAME_ONLY"
+});
+
+Accounts.config({
+    forbidClientAccountCreation: true
+});
+
+//***************************************
+//
 //        Time
 //
 //***************************************
