@@ -28,10 +28,7 @@
 </div>
 
 <div class="StatusInfoContainer">
-     <h1> Status </h1>
-     <p>Pool Temp:   75F</p>
-     <p>Air Temp:    82F</p>
-     <p>Salt Level:  3200ppm</p>
+     {{> StatusInfo}}
 </div>
 {{/if}}
 
@@ -100,4 +97,11 @@
          <img id="OUTimg" src="images/greendot.png" alt="Output">
          <input type="number" value="50" id="js-Percent" name="Percent"> Percent
     </div>   
- </template>
+</template>
+
+<template name="StatusInfo">
+     <h1> Status </h1>
+     <p>Pool Temp:   --F</p>
+     <p>Air Temp:    {{curTemp}}F</p>
+     <p>Salt Level:  ----ppm</p>
+</template>
