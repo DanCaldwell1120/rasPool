@@ -32,9 +32,7 @@
 </div>
 {{/if}}
 
-<div class="PoolPicContainer">
-	<img src="images/poolPic.jpg" alt="poolPic">
-</div>
+
 
 </body>
 
@@ -105,3 +103,10 @@
      <p>Air Temp:    {{curTemp}}F</p>
      <p>Salt Level:  ----ppm</p>
 </template>
+
+<template name="poolPic">
+     <div class="PoolPicContainer">
+          <img src="{{fileName}}" />
+     </div>    
+</template>
+

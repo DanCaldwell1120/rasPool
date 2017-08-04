@@ -3,14 +3,6 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
 
-const rpGPIO = 3;
-const bpGPIO = 5;
-const plGPIO = 7;
-const awGPIO = 11;
-
-const onGPIO = 0;
-const offGPIO = 1;
-
 //***************************************
 //
 //        Login
@@ -22,7 +14,7 @@ Accounts.ui.config({
 });
 
 Accounts.config({
-    forbidClientAccountCreation: true
+     forbidClientAccountCreation: true
 });
 
 //***************************************
@@ -35,7 +27,7 @@ Template.Title.helpers({
   currentTime() {
     var ST = RasPool.find({Component: "systemTime"}).fetch();
     var date = ST[0].currentTime;
-    var begun = moment(date).format('MMMM Do YYYY, h:mm:ss A');
+    var begun = moment(date).format('MMMM Do YYYY, h:mm A');
   
     return begun;
   }
@@ -317,6 +309,12 @@ Template.SaltCell.events({
   },
 });
 
+//***************************************
+//
+//        Status Info
+//
+//***************************************
+
 Template.StatusInfo.helpers({
   curTemp() {
     var ST = RasPool.find({Component: "systemTime"}).fetch();
@@ -324,6 +322,30 @@ Template.StatusInfo.helpers({
   }
 });
 
+//***************************************
+//
+//        Pool Pic
+//
+//***************************************
+
+const fileName = '/static/poolPic.jpg';
+
+Template.poolPic.onRendered(() => {
+  Image.find().observeChanges({
+    changed(id, fields) {
+      // this is how you get your image to update in the client without refreshing.
+      // the '?t=' + new Date().valueOf() code keeps the same URL but prevents your browser
+      // from just keeping a cached version.
+      $('img').prop('src', fileName + '?t=' + new Date().valueOf());
+    }
+  });
+});
+
+Template.poolPic.helpers({
+  'fileName': () => {
+    return fileName;
+  }
+});
 
 
 //***************************************
@@ -464,9 +486,4 @@ Meteor.setInterval(function(){
 //
 
   }, '500'
-); 
-
-
-
-
-
+);
