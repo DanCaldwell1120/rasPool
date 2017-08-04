@@ -336,7 +336,7 @@ Template.poolPic.onRendered(() => {
       // this is how you get your image to update in the client without refreshing.
       // the '?t=' + new Date().valueOf() code keeps the same URL but prevents your browser
       // from just keeping a cached version.
-      $('img').prop('src', fileName + '?t=' + new Date().valueOf());
+      $('img#poolimg').prop('src', fileName + '?t=' + new Date().valueOf());
     }
   });
 });
