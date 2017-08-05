@@ -187,6 +187,7 @@ Template.AddWater.events({
   },
 });
 
+
 //***************************************
 //
 //        Salt Cell
@@ -205,10 +206,14 @@ Template.SaltCell.onCreated(function SaltCellOnCreated() {
 
       var tr = Math.floor((et - ct)/3600000);
   
-      RasPool.update(
-        {_id: SCid},
-        {$set: {TimeRemaining: tr}},
-      );
+      if (tr<0) {
+        tr=0;
+      } else {
+        RasPool.update(
+          {_id: SCid},
+          {$set: {TimeRemaining: tr}},
+        );
+      }
     }, '3000');
 
 });
