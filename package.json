@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "babel-runtime": "^6.25.0",
+    "bcrypt": "^1.0.2",
     "ds18b20": "^0.1.0",
     "meteor-node-stubs": "^0.2.11",
     "python-shell": "^0.4.0"

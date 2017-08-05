@@ -18,7 +18,7 @@ meteor add http (API call for air temperature)
 
 meteor add accounts-ui accounts-password
 
-meteor npm add python-shell
+meteor npm install --save python-shell
 
 meteor add iron:router
 
