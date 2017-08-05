@@ -319,6 +319,10 @@ Template.StatusInfo.helpers({
   curTemp() {
     var ST = RasPool.find({Component: "systemTime"}).fetch();
     return ST[0].currentTemp;
+  },
+  wtrTemp() {
+    var ST = RasPool.find({Component: "systemTime"}).fetch();
+    return ST[0].waterTemp;
   }
 });
 
