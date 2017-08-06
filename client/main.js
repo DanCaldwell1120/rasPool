@@ -197,25 +197,6 @@ Template.AddWater.events({
 Template.SaltCell.onCreated(function SaltCellOnCreated() {
   //  Valve is SHUT
 
-
-    Meteor.setInterval(function(){
-      var SC = RasPool.find({Component: "SaltCell"}).fetch();
-      var SCid = SC[0]._id;
-      var et = SC[0].EndTime.getTime();
-      var ct = new Date().getTime();
-
-      var tr = Math.floor((et - ct)/3600000);
-  
-      if (tr<0) {
-        tr=0;
-      } else {
-        RasPool.update(
-          {_id: SCid},
-          {$set: {TimeRemaining: tr}},
-        );
-      }
-    }, '3000');
-
 });
 
 Template.SaltCell.helpers({
@@ -226,15 +207,7 @@ Template.SaltCell.helpers({
   
   TimeRemaining() {
     var SC = RasPool.find({Component: "SaltCell"}).fetch();
-    var SCid = SC[0]._id;
-    var et = SC[0].EndTime.getTime();
-    var ct = new Date().getTime();
-
-    var tr = Math.floor((et - ct)/3600000);
-    RasPool.update(
-      {_id: SCid},
-      {$set: {TimeRemaining: tr}},
-    );    
+    var tr = SC[0].TimeRemaining;
     return tr;
   },
 });
