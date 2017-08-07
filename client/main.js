@@ -329,6 +329,38 @@ Template.poolPic.helpers({
   }
 });
 
+//***************************************
+//
+// Forecast
+//
+//***************************************
+
+Template.Forecast.helpers({
+  weekDay(day) {
+  	var fcast = Forecast.find({Day: day}).fetch();
+    return fcast[0].weekDay;
+  },
+  date(day) {
+  	var fcast = Forecast.find({Day: day}).fetch();
+    return fcast[0].date;
+  },
+  iconURL(day) {
+  	var fcast = Forecast.find({Day: day}).fetch();
+    return fcast[0].icon_url;
+  },
+  Conditions(day) {
+  	var fcast = Forecast.find({Day: day}).fetch();
+    return fcast[0].conditions;
+  },
+  Hi_Low(day) {
+  	var fcast = Forecast.find({Day: day}).fetch();
+    return fcast[0].hi_low;
+  },
+  Pop(day) {
+  	var fcast = Forecast.find({Day: day}).fetch();
+    return fcast[0].pop;
+  }
+});
 
 //***************************************
 //

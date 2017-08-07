@@ -30,6 +30,10 @@
 <div class="StatusInfoContainer">
      {{> StatusInfo}}
 </div>
+
+<div class="ForecastContainer">
+     {{> Forecast}}
+</div>
 {{/if}}
 
 </body>
@@ -106,5 +110,45 @@
      <div class="PoolPicContainer">
           <img id="poolimg" src="{{fileName}}" />
      </div>    
+</template>
+
+<template name="Forecast">
+     <div class="FiveDayCast">
+          <div id=Day0>
+               <p><b>Today</b></p>
+               <img src={{iconURL 0}}>
+               <p>{{Conditions 0}}</p>
+               <p>{{Hi_Low 0}}</p>
+               <p id="POP">{{Pop 0}}</p>
+          </div>
+          <div id=Day1>
+               <p><b>Tomorrow</b></p>
+               <img src={{iconURL 1}}>
+               <p>{{Conditions 1}}</p>
+               <p>{{Hi_Low 1}}</p>
+               <p id="POP">{{Pop 1}}</p>
+          </div>
+          <div id=Day2>
+               <p><b>{{weekDay 2}}</b></p>
+               <img src={{iconURL 2}}>
+               <p>{{Conditions 2}}</p>
+               <p>{{Hi_Low 2}}</p>
+               <p id="POP">{{Pop 2}}</p>
+          </div>
+          <div id=Day3>
+               <p><b>{{weekDay 3}}</b></p>
+               <img src={{iconURL 3}}>
+               <p>{{Conditions 3}}</p>
+               <p>{{Hi_Low 3}}</p>
+               <p id="POP">{{Pop 3}}</p>
+          </div>
+          <div id=Day4>
+               <p><b>{{weekDay 4}}</b></p>
+               <img src={{iconURL 4}}>
+               <p>{{Conditions 4}}</p>
+               <p>{{Hi_Low 4}}</p>
+               <p id="POP">{{Pop 4}}</p>
+          </div>
+     </div>
 </template>
 
