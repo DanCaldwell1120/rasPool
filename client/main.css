@@ -307,6 +307,6 @@ input[type=time] {
      width: 15px;
      height: 15px;
      content: "";
-     background: url("images/droplet2.png") no-repeat 0 0;
+     background: url("images/droplet.png") no-repeat 0 0;
      background-size: 100%;
 }
