@@ -249,12 +249,26 @@ input[type=time] {
 }
 .FiveDayCast p {
      display: block;
-     -webkit-margin-before: 1em;
-     -webkit-margin-after: 1em;
+     -webkit-margin-before: 0.65em;
+     -webkit-margin-after: 0.65em;
      -webkit-margin-start: 0px;
      -webkit-margin-end: 0px;
 }
-#Day0 {
+.FiveDayCast img {
+	height: 72px;
+	width: 72px;
+}
+.dayID {
+	-webkit-margin-before: 0.35em !important;
+	-webkit-margin-after: 0.1em !important;
+}
+.dateID { 
+	font-size: 14px;
+	-webkit-margin-before: 0.1em !important;
+	-webkit-margin-after: 0.1em !important;
+	
+}
+#Day0, #Day2 {
      background-color: #0099cc;
      width: 116px;
      height: 225px;
@@ -266,32 +280,8 @@ input[type=time] {
      float: left;
      position: relative;
 }
-#Day1 {
-     background-color: #0099bb;
-     width: 114px;
-     height: 225px;
-     text-align: center;
-     padding-left: 35px;
-     padding-right: 35px;
-     border-right-color: black;
-     border-right-style: solid;
-     float: left;
-     position: relative;
-}
-#Day2 {
-     background-color: #0099aa;
-     width: 116px;
-     height: 225px;
-     text-align: center;
-     padding-left: 35px;
-     padding-right: 35px;
-     border-right-color: black;
-     border-right-style: solid;
-     float: left;
-     position: relative;
-}
-#Day3 {
-     background-color: #009999;
+#Day1, #Day3 {
+     background-color: #0099cc;
      width: 114px;
      height: 225px;
      text-align: center;
@@ -303,7 +293,7 @@ input[type=time] {
      position: relative;
 }
 #Day4 {
-     background-color: #009988;
+     background-color: #0099cc;
      width: 116px;
      height: 225px;
      text-align: center;
@@ -312,7 +302,7 @@ input[type=time] {
      float: left;
      position: relative;
 }
-#POP:before {
+.POP:before {
      display: inline-block;
      width: 15px;
      height: 15px;
