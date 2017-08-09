@@ -253,51 +253,6 @@ if (Forecast.find().count() === 0) {
 }
   
   
-//
-// Weather API Request
-//
-
-var wunderAPI = Meteor.settings.wunderground;
-var url = "http://api.wunderground.com/api/" + wunderAPI + "/forecast10day/q/VA/Chesapeake.json";
-
-Meteor.http.call("GET", url, function (error, result) {
-    if (error) {
-      console.log('Error');
-    } else {
-     for (var i = 0, len = 5; i < len; i++) {
-          var weekDay = result.data.forecast.simpleforecast.forecastday[i].date.weekday;
-          var month = result.data.forecast.simpleforecast.forecastday[i].date.monthname_short;
-          var day = result.data.forecast.simpleforecast.forecastday[i].date.day;
-          var date = month + ' ' + day;
-          var high = result.data.forecast.simpleforecast.forecastday[i].high.fahrenheit + '°';
-          var low = result.data.forecast.simpleforecast.forecastday[i].low.fahrenheit + '°';
-          var high_low = high + '/ ' + low;
-          var pop = result.data.forecast.simpleforecast.forecastday[i].pop + '%';
-          var conditions = result.data.forecast.simpleforecast.forecastday[i].conditions;
-          if (conditions.includes("Chance of a")) {
-               conditions = conditions.substring(12);
-          } else if (conditions.includes("Chance of")) {
-               conditions = conditions.substring(10);
-          }
-          var preURL = result.data.forecast.simpleforecast.forecastday[i].icon_url;
-          var iconURL = "images/weather/" + preURL.substring(28, preURL.length-3) + "png";
-          
-
-          console.log(weekDay);
-          console.log(date);
-          console.log(iconURL);
-          console.log(conditions);
-          console.log(high_low);
-          console.log(pop);
-          console.log(' ');
-
-          var fc_day = Forecast.find({Day: i}).fetch();
-          var fc_day_id = fc_day[0]._id;
-
-          Forecast.update({_id: fc_day_id}, {$set: {weekDay: weekDay, date: date, icon_url: iconURL,conditions: conditions, hi_low: high_low, pop: pop, }}); 
-          }
-     }
-});
 
 });
 
@@ -329,23 +284,6 @@ Meteor.setInterval(function(){
     {_id: STid},
     {$set: {currentTime: date}},
   );
-
-//    
-// Update current temp variable in RasPool Collection
-//
-
-  var openweatherAPI = Meteor.settings.openweathermap;
-  var url = "http://api.openweathermap.org/data/2.5/weather?zip=23322,us&APPID=" + openweatherAPI + "&units=imperial";
-
-
-//  this.unblock();
-  Meteor.http.call("GET", url, function (error, result) {
-    if (error) {
-      console.log('Error');
-    } else {
-      RasPool.update({_id: STid},{$set: {currentTemp: Math.round(result.data.main.temp)}});
-    }
-  });
 
 //
 // Update water temp variable in RasPool Collection
@@ -475,14 +413,84 @@ Meteor.setInterval(function(){
     }
    
 
+}, '500');
+
+
+
+Meteor.setInterval(function(){
+
+  var ST = RasPool.find({Component: "systemTime"}).fetch();
+  var STid = ST[0]._id;
+  
+//    
+// Update current temp variable in RasPool Collection
+//
+
+  var openweatherAPI = Meteor.settings.openweathermap;
+  var url = "http://api.openweathermap.org/data/2.5/weather?zip=23322,us&APPID=" + openweatherAPI + "&units=imperial";
+
+
+//  this.unblock();
+  Meteor.http.call("GET", url, function (error, result) {
+    if (error) {
+      console.log('Error');
+    } else {
+      RasPool.update({_id: STid},{$set: {currentTemp: Math.round(result.data.main.temp)}});
+    }
+  });
+
+
+
 }, '5000');
 
 
+Meteor.setInterval(function(){
 
+  //
+  // Weather API Request
+  //
 
+  var wunderAPI = Meteor.settings.wunderground;
+  var url = "http://api.wunderground.com/api/" + wunderAPI + "/forecast10day/q/VA/Chesapeake.json";
 
+  Meteor.http.call("GET", url, function (error, result) {
+      if (error) {
+        console.log('Error');
+      } else {
+       for (var i = 0, len = 5; i < len; i++) {
+            var weekDay = result.data.forecast.simpleforecast.forecastday[i].date.weekday;
+            var month = result.data.forecast.simpleforecast.forecastday[i].date.monthname_short;
+            var day = result.data.forecast.simpleforecast.forecastday[i].date.day;
+            var date = month + ' ' + day;
+            var high = result.data.forecast.simpleforecast.forecastday[i].high.fahrenheit + '°';
+            var low = result.data.forecast.simpleforecast.forecastday[i].low.fahrenheit + '°';
+            var high_low = high + '/ ' + low;
+            var pop = result.data.forecast.simpleforecast.forecastday[i].pop + '%';
+            var conditions = result.data.forecast.simpleforecast.forecastday[i].conditions;
+            if (conditions.includes("Chance of a")) {
+                 conditions = conditions.substring(12);
+            } else if (conditions.includes("Chance of")) {
+                 conditions = conditions.substring(10);
+            }
+            var preURL = result.data.forecast.simpleforecast.forecastday[i].icon_url;
+            var iconURL = "images/weather/" + preURL.substring(28, preURL.length-3) + "png";
+            
 
+            console.log(weekDay);
+            console.log(date);
+            console.log(iconURL);
+            console.log(conditions);
+            console.log(high_low);
+            console.log(pop);
+            console.log(' ');
 
+            var fc_day = Forecast.find({Day: i}).fetch();
+            var fc_day_id = fc_day[0]._id;
 
+            Forecast.update({_id: fc_day_id}, {$set: {weekDay: weekDay, date: date, icon_url: iconURL,conditions: conditions, hi_low: high_low, pop: pop, }}); 
+            }
+       }
+  });
 
+}, '600000');
 
