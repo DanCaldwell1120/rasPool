@@ -253,6 +253,7 @@ input[type=time] {
      -webkit-margin-after: 0.45em;
      -webkit-margin-start: 0px;
      -webkit-margin-end: 0px;
+     position: relative;
 }
 .FiveDayCast img {
 	height: 72px;
@@ -301,6 +302,7 @@ input[type=time] {
      width: 15px;
      height: 15px;
      content: "";
+     margin-left: -15px;
      background: url("images/droplet.png") no-repeat 0 0;
      background-size: 100%;
 }
