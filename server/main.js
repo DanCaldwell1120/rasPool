@@ -32,7 +32,6 @@ Meteor.startup(function ()  {
       }).run();
     });
 
-
     // code to run on server at startup
 
     if (RasPool.find().count() === 0) {
@@ -204,56 +203,59 @@ Meteor.startup(function ()  {
 // Forecast
 //
 
-if (Forecast.find().count() === 0) {
-     Forecast.insert({ 
-          Day: 0,
-          weekDay: 'Monday',
-          date: '8 Aug',
-          icon_url: 'http://icons.wxug.com/i/c/i/partlycloudy.gif',
-          conditions: 'partly cloudy',
-          hi_low: '75 / 65',
-          pop: '20%'
-     });
-     Forecast.insert({ 
-          Day: 1,
-          weekDay: 'Tuesday',
-          date: '8 Aug',
-          icon_url: 'http://icons.wxug.com/i/c/i/partlycloudy.gif',
-          conditions: 'partly cloudy',
-          hi_low: '75 / 65',
-          pop: '20%'
-     });
-     Forecast.insert({ 
-          Day: 2,
-          weekDay: 'Wednesday',
-          date: '9 Aug',
-          icon_url: 'http://icons.wxug.com/i/c/i/partlycloudy.gif',
-          conditions: 'partly cloudy',
-          hi_low: '75 / 65',
-          pop: '20%'
-     });
-     Forecast.insert({ 
-          Day: 3,
-          weekDay: 'Thursday',
-          date: '10 Aug',
-          icon_url: 'http://icons.wxug.com/i/c/i/partlycloudy.gif',
-          conditions: 'partly cloudy',
-          hi_low: '75 / 65',
-          pop: '20%'
-     });
-     Forecast.insert({ 
-          Day: 4,
-          weekDay: 'Friday',
-          date: '11 Aug',
-          icon_url: 'http://icons.wxug.com/i/c/i/partlycloudy.gif',
-          conditions: 'partly cloudy',
-          hi_low: '75 / 65',
-          pop: '20%'
-     });
-}
+  if (Forecast.find().count() === 0) {
+       Forecast.insert({ 
+            Day: 0,
+            weekDay: 'Monday',
+            date: '8 Aug',
+            icon_url: 'http://icons.wxug.com/i/c/i/partlycloudy.gif',
+            conditions: 'partly cloudy',
+            hi_low: '75 / 65',
+            pop: '20%',
+            inch_precip: '0'
+       });
+       Forecast.insert({ 
+            Day: 1,
+            weekDay: 'Tuesday',
+            date: '8 Aug',
+            icon_url: 'http://icons.wxug.com/i/c/i/partlycloudy.gif',
+            conditions: 'partly cloudy',
+            hi_low: '75 / 65',
+            pop: '20%',
+            inch_precip: '0'
+       });
+       Forecast.insert({ 
+            Day: 2,
+            weekDay: 'Wednesday',
+            date: '9 Aug',
+            icon_url: 'http://icons.wxug.com/i/c/i/partlycloudy.gif',
+            conditions: 'partly cloudy',
+            hi_low: '75 / 65',
+            pop: '20%',
+            inch_precip: '0'
+       });
+       Forecast.insert({ 
+            Day: 3,
+            weekDay: 'Thursday',
+            date: '10 Aug',
+            icon_url: 'http://icons.wxug.com/i/c/i/partlycloudy.gif',
+            conditions: 'partly cloudy',
+            hi_low: '75 / 65',
+            pop: '20%',
+            inch_precip: '0'
+       });
+       Forecast.insert({ 
+            Day: 4,
+            weekDay: 'Friday',
+            date: '11 Aug',
+            icon_url: 'http://icons.wxug.com/i/c/i/partlycloudy.gif',
+            conditions: 'partly cloudy',
+            hi_low: '75 / 65',
+            pop: '20%',
+            inch_precip: '0'
+       });
+  }
   
-  
-
 });
 
 function DateToMinutesPastMidnight(Date){
@@ -421,7 +423,7 @@ Meteor.setInterval(function(){
 
   var ST = RasPool.find({Component: "systemTime"}).fetch();
   var STid = ST[0]._id;
-  
+
 //    
 // Update current temp variable in RasPool Collection
 //
@@ -457,7 +459,7 @@ Meteor.setInterval(function(){
       if (error) {
         console.log('Error');
       } else {
-       for (var i = 0, len = 5; i < len; i++) {
+        for (var i = 0, len = 5; i < len; i++) {
             var weekDay = result.data.forecast.simpleforecast.forecastday[i].date.weekday;
             var month = result.data.forecast.simpleforecast.forecastday[i].date.monthname_short;
             var day = result.data.forecast.simpleforecast.forecastday[i].date.day;
@@ -488,9 +490,36 @@ Meteor.setInterval(function(){
             var fc_day_id = fc_day[0]._id;
 
             Forecast.update({_id: fc_day_id}, {$set: {weekDay: weekDay, date: date, icon_url: iconURL,conditions: conditions, hi_low: high_low, pop: pop, }}); 
-            }
+          }
        }
   });
+
+  //
+  // API call to get predicted inches of precipitation
+  //
+    var apixuKey = Meteor.settings.apixu;
+    var url = "https://api.apixu.com/v1/forecast.json?key=" + apixuKey + "&q=23322&days=5"
+    
+    Meteor.http.call("GET", url, function (error, result) {
+          if (error) {
+            console.log('Error');
+          } else {
+            for (var i = 0, len = 5; i < len; i++) {
+              var inch_precip = result.data.forecast.forecastday[i].day.totalprecip_in.toFixed(1);
+              var fc_day = Forecast.find({Day: i}).fetch();
+              var fc_day_id = fc_day[0]._id;
+
+              Forecast.upsert({_id: fc_day_id}, {$set: {inch_precip: inch_precip }}); 
+            }
+            console.log('precipitation forecasts')
+            console.log(result.data.forecast.forecastday[0].day.totalprecip_in);
+            console.log(result.data.forecast.forecastday[1].day.totalprecip_in);
+            console.log(result.data.forecast.forecastday[2].day.totalprecip_in);
+            console.log(result.data.forecast.forecastday[3].day.totalprecip_in);
+            console.log(result.data.forecast.forecastday[4].day.totalprecip_in);
+          }
+  });
+
 
 }, '600000');
 

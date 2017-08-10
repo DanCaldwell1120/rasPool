@@ -359,6 +359,10 @@ Template.Forecast.helpers({
   Pop(day) {
   	var fcast = Forecast.find({Day: day}).fetch();
     return fcast[0].pop;
+  },
+  inch_precip(day) {
+    var fcast = Forecast.find({Day: day}).fetch();
+    return fcast[0].inch_precip;
   }
 });
 
@@ -403,6 +407,12 @@ Meteor.setInterval(function(){
 
   var BP = RasPool.find({Component: "BoosterPump"}).fetch();
 
+  if ($('#js-RunTime').is(':focus')) {
+
+  } else {
+    $('#js-RunTime').val(BP[0].RunTime);
+  }
+
   if (BP[0].Status == "ON") {
     $("#BPimg").show();
     $("#BPtr").show();
@@ -434,6 +444,11 @@ Meteor.setInterval(function(){
 
   var AW = RasPool.find({Component: "WaterValve"}).fetch();
   
+  if ($('#js-Inches').is(':focus')) {
+
+  } else {
+    $('#js-Inches').val(AW[0].InchesToAdd);
+  }
   if (AW[0].Status == "OPEN") {
     $("#AWimg").show();
     $("#AWtr").show();

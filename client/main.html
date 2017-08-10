@@ -115,20 +115,20 @@
 <template name="Forecast">
      <div class="FiveDayCast">
           <div id=Day0>
-               <p class="dayID"><b>{{weekDay 0}}</b></p>
+               <p class="dayID"><b>Today</b></p>
                <p class="dateID">{{date 0}}</p>
                <img src={{iconURL 0}}>
                <p>{{Conditions 0}}</p>
                <p>{{Hi_Low 0}}</p>
-               <p class="POP">{{Pop 0}}</p>
+               <p class="POP">{{Pop 0}} / {{inch_precip 0}}in</p>
           </div>
           <div id=Day1>
-               <p class="dayID"><b>{{weekDay 1}}</b></p>
+               <p class="dayID"><b>Tomorrow</b></p>
                <p class="dateID">{{date 1}}</p>
                <img src={{iconURL 1}}>
                <p>{{Conditions 1}}</p>
                <p>{{Hi_Low 1}}</p>
-               <p class="POP">{{Pop 1}}</p>
+               <p class="POP">{{Pop 1}} / {{inch_precip 1}}in</p>
           </div>
           <div id=Day2>
                <p class="dayID"><b>{{weekDay 2}}</b></p>
@@ -136,7 +136,7 @@
                <img src={{iconURL 2}}>
                <p>{{Conditions 2}}</p>
                <p>{{Hi_Low 2}}</p>
-               <p class="POP">{{Pop 2}}</p>
+               <p class="POP">{{Pop 2}} / {{inch_precip 2}}in</p>
           </div>
           <div id=Day3>
                <p class="dayID"><b>{{weekDay 3}}</b></p>
@@ -144,7 +144,7 @@
                <img src={{iconURL 3}}>
                <p>{{Conditions 3}}</p>
                <p>{{Hi_Low 3}}</p>
-               <p class="POP">{{Pop 3}}</p>
+               <p class="POP">{{Pop 3}} / {{inch_precip 3}}in</p>
           </div>
           <div id=Day4>
                <p class="dayID"><b>{{weekDay 4}}</b></p>
@@ -152,7 +152,7 @@
                <img src={{iconURL 4}}>
                <p>{{Conditions 4}}</p>
                <p>{{Hi_Low 4}}</p>
-               <p class="POP">{{Pop 4}}</p>
+               <p class="POP">{{Pop 4}} / {{inch_precip 4}}in</p>
           </div>
      </div>
 </template>
