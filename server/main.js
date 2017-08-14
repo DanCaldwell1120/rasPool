@@ -28,7 +28,7 @@ Meteor.startup(function ()  {
     fs.watchFile(fileName, (curr, prev) => {
       curr.name = fileName;
       new Fiber(() => {
-        Image.upsert({name: fileName}, curr);
+        ImageL.upsert({name: fileName}, curr);
       }).run();
     });
 

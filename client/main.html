@@ -1,40 +1,43 @@
 <head>
      <title>rasPool</title>
+     <link type="text/css" href="magnifier.css" rel="stylesheet">
+     <script type="text/javascript" src="magnifier.js"></script>
 </head>
 
 <body>
 
-<div class="TitleContainer">
-     {{> Title}}
-</div>
-{{#if currentUser}}
-<div class="RecircPumpContainer">
-     {{> RecircPump}}
-</div>
+     <div class="TitleContainer">
+          {{> Title}}
+     </div>
+     {{#if currentUser}}
+          <div class="RecircPumpContainer">
+               {{> RecircPump}}
+          </div>
 
-<div class="BoosterPumpContainer">
-     {{> BoosterPump}}
-</div>
+          <div class="BoosterPumpContainer">
+               {{> BoosterPump}}
+          </div>
 
-<div class="AddWaterContainer">
-     {{> AddWater}}
-</div>
-<div class="PoolLightContainer">
-     {{> PoolLight}}
-</div>
+          <div class="AddWaterContainer">
+               {{> AddWater}}
+          </div>
+          <div class="PoolLightContainer">
+               {{> PoolLight}}
+          </div>
 
-<div class="SaltCell">
-     {{> SaltCell}}
-</div>
+          <div class="SaltCell">
+               {{> SaltCell}}
+          </div>
 
-<div class="StatusInfoContainer">
-     {{> StatusInfo}}
-</div>
+          <div class="StatusInfoContainer">
+               {{> StatusInfo}}
+          </div>
 
-<div class="ForecastContainer">
-     {{> Forecast}}
-</div>
-{{/if}}
+          <div class="ForecastContainer">
+               {{> Forecast}}
+          </div>
+     {{/if}}
+     {{> poolPic}}
 
 </body>
 
@@ -51,19 +54,23 @@
 <template name="RecircPump">
      <h1>Recirc Pump</h1>
      <button id="js-Start">Start</button>
-     <input type="time" id="js-StartTime" name="newStartTime"> <br>
+     <input type="time" id="js-StartTime" name="newStartTime">
+     <br>
      <img id="RPimg" src="images/greendot.png" alt="pump">
      <button id="js-Stop">Stop</button>
-     <input type="time" value="" id="js-StopTime" name="newStopTime"> <br>
+     <input type="time" value="" id="js-StopTime" name="newStopTime">
+     <br>
 </template>
 
 <template name="BoosterPump">
      <h1>Booster Pump</h1>
      <button id="js-Start">Start</button>
-     <input type="number" value="2" id="js-RunTime" name="RunTime"> Run Time (hrs)<br>
+     <input type="number" value="2" id="js-RunTime" name="RunTime">
+     Run Time (hrs)<br>
      <button id="js-Stop">Stop</button>
      <img id="BPimg" src="images/greendot.png" alt="pump">
-     <p id="BPtr">{{TimeRemaining}} mins remaining</p>
+     <p id="BPtr">{{TimeRemaining}}
+          mins remaining</p>
 </template>
 
 <template name="PoolLight">
@@ -76,10 +83,12 @@
 <template name="AddWater">
      <h1>Add Water</h1>
      <button id="js-Open">Start</button>
-     <input type="number" value="1" id="js-Inches" name="AddInches"> Inches to Add<br>
+     <input type="number" value="1" id="js-Inches" name="AddInches">
+     Inches to Add<br>
      <button id="js-Shut">Stop</button>
      <img id="AWimg" src="images/greendot.png" alt="valve">
-     <p id="AWtr">{{TimeRemaining}} mins remaining</p>
+     <p id="AWtr">{{TimeRemaining}}
+          mins remaining</p>
 </template>
 
 <template name="SaltCell">
@@ -88,72 +97,107 @@
           <p>Super Chlorinate</p>
           <img id="SCimg" src="images/greendot.png" alt="Superchlorinate">
           <button id="js-SCStart">Start</button>
-          <input type="number" value="24" id="js-SCtime" name="SCtime"> Hours<br>
+          <input type="number" value="24" id="js-SCtime" name="SCtime">
+          Hours<br>
           <button id="js-SCStop">Stop</button>
-          <p id="SCtr">{{TimeRemaining}} hours remaining</p>
+          <p id="SCtr">{{TimeRemaining}}
+               hours remaining</p>
      </div>
      <div class="SaltCellOutput">
-         <p>Output</p>
-         <img id="OUTimg" src="images/greendot.png" alt="Output">
-         <input type="number" value="50" id="js-Percent" name="Percent"> Percent
-    </div>   
+          <p>Output</p>
+          <img id="OUTimg" src="images/greendot.png" alt="Output">
+          <input type="number" value="50" id="js-Percent" name="Percent">
+          Percent
+     </div>
 </template>
 
 <template name="StatusInfo">
-     <h1> Status </h1>
-     <p>Pool Temp:   {{wtrTemp}}F</p>
-     <p>Air Temp:    {{curTemp}}F</p>
-     <p>Salt Level:  ----ppm</p>
+     <h1>
+          Status
+     </h1>
+     <p>Pool Temp:
+          {{wtrTemp}}F</p>
+     <p>Air Temp:
+          {{curTemp}}F</p>
+     <p>Salt Level: ----ppm</p>
 </template>
 
 <template name="poolPic">
      <div class="PoolPicContainer">
-          <img id="poolimg" src="{{fileName}}" />
-     </div>    
+          <div class="magnifier" style="width: 937px; height: 702px;">
+               <div class="maglens" style="width: 175px; height: 175px; border: hidden; border-radius: 50%;">
+                    <img id="poolimg" src="{{fileName}}" class="maglarge" style="width: 3840px; height: 2160px;"/>
+               </div>
+          </div>
+     </div>
 </template>
 
 <template name="Forecast">
      <div class="FiveDayCast">
           <div id=Day0>
-               <p class="dayID"><b>Today</b></p>
+               <p class="dayID">
+                    <b>Today</b>
+               </p>
                <p class="dateID">{{date 0}}</p>
                <img src={{iconURL 0}}>
                <p>{{Conditions 0}}</p>
-               <p>{{Hi_Low 0}}</p>
-               <p class="POP">{{Pop 0}} / {{inch_precip 0}}in</p>
+               <p class="Hi_Low">{{Hi_Low 0}}</p>
+               <p class="POP">{{Pop 0}}
+                    /
+                    {{inch_precip 0}}
+                    in</p>
           </div>
           <div id=Day1>
-               <p class="dayID"><b>Tomorrow</b></p>
+               <p class="dayID">
+                    <b>Tomorrow</b>
+               </p>
                <p class="dateID">{{date 1}}</p>
                <img src={{iconURL 1}}>
                <p>{{Conditions 1}}</p>
-               <p>{{Hi_Low 1}}</p>
-               <p class="POP">{{Pop 1}} / {{inch_precip 1}}in</p>
+               <p class="Hi_Low">{{Hi_Low 1}}</p>
+               <p class="POP">{{Pop 1}}
+                    /
+                    {{inch_precip 1}}
+                    in</p>
           </div>
           <div id=Day2>
-               <p class="dayID"><b>{{weekDay 2}}</b></p>
+               <p class="dayID">
+                    <b>{{weekDay 2}}</b>
+               </p>
                <p class="dateID">{{date 2}}</p>
                <img src={{iconURL 2}}>
                <p>{{Conditions 2}}</p>
-               <p>{{Hi_Low 2}}</p>
-               <p class="POP">{{Pop 2}} / {{inch_precip 2}}in</p>
+               <p class="Hi_Low">{{Hi_Low 2}}</p>
+               <p class="POP">{{Pop 2}}
+                    /
+                    {{inch_precip 2}}
+                    in</p>
           </div>
           <div id=Day3>
-               <p class="dayID"><b>{{weekDay 3}}</b></p>
+               <p class="dayID">
+                    <b>{{weekDay 3}}</b>
+               </p>
                <p class="dateID">{{date 3}}</p>
                <img src={{iconURL 3}}>
                <p>{{Conditions 3}}</p>
-               <p>{{Hi_Low 3}}</p>
-               <p class="POP">{{Pop 3}} / {{inch_precip 3}}in</p>
+               <p class="Hi_Low">{{Hi_Low 3}}</p>
+               <p class="POP">{{Pop 3}}
+                    /
+                    {{inch_precip 3}}
+                    in</p>
           </div>
           <div id=Day4>
-               <p class="dayID"><b>{{weekDay 4}}</b></p>
+               <p class="dayID">
+                    <b>{{weekDay 4}}</b>
+               </p>
                <p class="dateID">{{date 4}}</p>
                <img src={{iconURL 4}}>
                <p>{{Conditions 4}}</p>
-               <p>{{Hi_Low 4}}</p>
-               <p class="POP">{{Pop 4}} / {{inch_precip 4}}in</p>
+               <p class="Hi_Low">{{Hi_Low 4}}</p>
+               <p class="POP">{{Pop 4}}
+                    /
+                    {{inch_precip 4}}
+                    in</p>
           </div>
      </div>
 </template>
-

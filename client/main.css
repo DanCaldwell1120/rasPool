@@ -1,252 +1,252 @@
 body {
-	background-image: url("images/stone.jpg");
-	margin: auto;
-	width: 960px;
+     /*	background-image: url("images/stone.jpg"); */
+     background-image: url("images/background1.jpg");
+     margin: auto;
+     width: 960px;
 }
 
 h1 {
-	font-size: 24px;
-	color: Black;
-	position: relative;
-	text-align: center;
-	margin: 5px 5px;
+     font-size: 24px;
+     color: Black;
+     position: relative;
+     text-align: center;
+     margin: 5px 5px;
 }
 
 h2 {
-	font-size: 35px;
-	color: Black;
-	position: relative;
-	text-align: center;
-	margin: 0px;
+     font-size: 35px;
+     color: Black;
+     position: relative;
+     text-align: center;
+     margin: 0px;
 }
 
 p {
-	margin: 0px;
-	text-align: center;
+     margin: 0px;
+     text-align: center;
 }
 
-
-
 #sysTime {
-	position: absolute;
-	left: 25px;
-	top: 17px;
-	font-size: 15px;	
+     position: absolute;
+     left: 25px;
+     top: 17px;
+     font-size: 15px;
 }
 
 #login-buttons {
-	position: absolute;
-	right: 25px;
-	top: 17px;
-	font-size: 15px;
+     position: absolute;
+     right: 25px;
+     top: 17px;
+     font-size: 15px;
 }
 
 #login-buttons a {
-	text-decoration: none;
+     text-decoration: none;
 }
 
-
 #login-dropdown-list {
- 	position: fixed !important;
- 	top: 0 !important;
- 	bottom: 0 !important;
- 	left: 0 !important;
- 	right: 0 !important;
- 	margin-left: auto;
-	margin-right: auto;
- 	margin-top: 100px;
-	height: 200px;
+     position: fixed !important;
+     top: 0 !important;
+     bottom: 0 !important;
+     left: 0 !important;
+     right: 0 !important;
+     margin-left: auto;
+     margin-right: auto;
+     margin-top: 100px;
+     height: 200px;
 }
 
 #BPtr, #AWtr {
-	font-size: 17px;
-	color: Black;
-	display: none;
+     font-size: 17px;
+     color: Black;
+     display: none;
 }
 
 .TitleContainer {
-	width: 938px;
-	height: 40px;
-	background: #96b6ea;
-	margin: 2px 2px 2px 2px;
-	border-color: black;
-	border-style: solid;
-	float: left;
-	position: relative;
+     width: 938px;
+     height: 40px;
+     background: #96b6ea;
+     margin: 2px 2px 2px 2px;
+     border-color: black;
+     border-style: solid;
+     float: left;
+     position: relative;
 }
 
-.RecircPumpContainer, .BoosterPumpContainer, .AddWaterContainer  {
-	width: 296px;
-	height: 125px;
-	background: #96b6ea;
-	margin: 2px 2px 2px 2px;
-	padding: 5px 5px 10px;
-	border-color: black;
-	border-style: solid;
-	float: left;
-	position: relative;
+.RecircPumpContainer, .BoosterPumpContainer, .AddWaterContainer {
+     width: 296px;
+     height: 125px;
+     background: #96b6ea;
+     margin: 2px 2px 2px 2px;
+     padding: 5px 5px 10px;
+     border-color: black;
+     border-style: solid;
+     float: left;
+     position: relative;
 }
 
 .PoolLightContainer {
-	width: 201px;
-	height: 150px;
-	background: #96b6ea;
-	margin: 2px;
-	padding: 5px 6px 10px 12px;
-	border-color: black;
-	border-style: solid;
-	float: left;
-	position: relative;
+     width: 201px;
+     height: 150px;
+     background: #96b6ea;
+     margin: 2px;
+     padding: 5px 6px 10px 12px;
+     border-color: black;
+     border-style: solid;
+     float: left;
+     position: relative;
 }
 
 .StatusInfoContainer {
-	width: 201px;
-	height: 150px;
-	background: #96b6ea;
-	margin: 2px;
-	padding: 5px 6px 10px 12px;
-	border-color: black;
-	border-style: solid;
-	float: left;
-	position: relative;
+     width: 201px;
+     height: 150px;
+     background: #96b6ea;
+     margin: 2px;
+     padding: 5px 6px 10px 12px;
+     border-color: black;
+     border-style: solid;
+     float: left;
+     position: relative;
 }
 
 #js-On, #js-Off {
-	position: relative;
-	left: 40px;
-}
-.SaltCell {
-	width: 470px;
-	height: 150px;
-	background: #96b6ea;
-	margin: 2px;
-	padding: 5px 5px 10px;
-	border-color: black;
-	border-style: solid;
-	float: left;
-	position: relative;
+     position: relative;
+     left: 40px;
 }
 
-#RPimg, #BPimg, #PLimg, #AWimg, #SCimg, #OUTimg  {
-	width: 25px;
-	height: 25x;
-	position: absolute;
-	right: 10px;
-	top: 10px;
-	display: none;
+.SaltCell {
+     width: 470px;
+     height: 150px;
+     background: #96b6ea;
+     margin: 2px;
+     padding: 5px 5px 10px;
+     border-color: black;
+     border-style: solid;
+     float: left;
+     position: relative;
+}
+
+#RPimg, #BPimg, #PLimg, #AWimg, #SCimg, #OUTimg {
+     width: 25px;
+     height: 25x;
+     position: absolute;
+     right: 10px;
+     top: 10px;
+     display: none;
 }
 
 #BPtr, #AWtr {
-	position: absolute;
-	left: 115px;
-	top: 87px;
+     position: absolute;
+     left: 115px;
+     top: 87px;
 }
 
 #SCtr {
-	position: absolute;
-	left: 100px;
-	top: 73px;
-
+     position: absolute;
+     left: 100px;
+     top: 73px;
 }
 
 .SaltCellOutput {
-	width: 145px;
-	height: 90px;
-	margin: 5px;
-	padding: 5px;
-	position: relative;
-	float: left;
-	border: solid 1px black;
+     width: 145px;
+     height: 90px;
+     margin: 5px;
+     padding: 5px;
+     position: relative;
+     float: left;
+     border: solid 1px black;
 }
 
 #js-Percent {
-	margin: 25px 5px 5px 25px;
+     margin: 25px 5px 5px 25px;
 }
 
 .SaltCellSuperCl {
-	width: 245px;
-	height: 90px;
-	margin: 5px 15px;
-	padding: 5px;
-	position: relative;
-	float: left;
-	border: solid 1px black;
+     width: 245px;
+     height: 90px;
+     margin: 5px 15px;
+     padding: 5px;
+     position: relative;
+     float: left;
+     border: solid 1px black;
 }
 
 #js-SCStart, #js-SCStop {
-	margin: 2px 0px;
+     margin: 2px 0px;
 }
 
 #js-SCtime {
-	margin: 5px 5px 5px 20px;
+     margin: 5px 5px 5px 20px;
 }
 
 .PoolPicContainer {
-	width: 937px;
-	height: 702px;
-	margin: 3px;
-	padding: 0px;
-	float: left;
-	position: relative;
+     width: 937px;
+     height: 702px;
+     margin: 3px;
+     padding: 0px;
+     float: left;
+     position: relative;
+     border-color: black;
+     border-style: solid;
 }
 
-.PoolPicContainer img {
-	width: 937px;
-	height: 702px;
-	margin: 0;
-	padding: 0;
-	border-color: black;
-	border-style: solid;
+#poolimg {
+     width: 937px;
+     height: 702px;
+     margin: 0;
+     padding: 0;
 }
 
 .StatusInfoContainer p {
-	padding: 0;
-	margin: 10px 10px;
-	text-align: left;
-	font-size: 18px;
+     padding: 0;
+     margin: 10px 10px;
+     text-align: left;
+     font-size: 18px;
 }
 
 input[type=submit] {
-	font-size: 32px;
-	margin: 5px;
-	width: 75px;
-	height: 40px;
-	border: hidden;
+     font-size: 32px;
+     margin: 5px;
+     width: 75px;
+     height: 40px;
+     border: hidden;
 }
 
 button {
-	width: 75px;
-	height: 30px;
-	margin: 5px 10px;
-	border-radius: 9px;
-	font-size: 15px;
-	background-color: white;
+     width: 75px;
+     height: 30px;
+     margin: 5px 10px;
+     border-radius: 9px;
+     font-size: 15px;
+     background-color: white;
 }
 
 input[type=number] {
-	margin: 2px;
-	width: 45px;
-	height: 18px;
-	font-size: 15px;
+     margin: 2px;
+     width: 45px;
+     height: 18px;
+     font-size: 15px;
 }
 
 input[type=time] {
-	margin: 2px;
-	height: 18px;
-	width: 125px;
-	font-size: 15px;
+     margin: 2px;
+     height: 18px;
+     width: 125px;
+     font-size: 15px;
 }
 
 .FiveDayCast {
      width: 938px;
      height: 225px;
-     background: #96b6ea;
+     /*     background: #96b6ea; */
+     background-color: transparent;
      border-color: black;
      border-style: solid;
      margin: 2px 2px 2px 2px;
      float: left;
-     position: relative;     
+     position: relative;
 }
+
 .FiveDayCast p {
      display: block;
      -webkit-margin-before: 0.45em;
@@ -255,22 +255,29 @@ input[type=time] {
      -webkit-margin-end: 0px;
      position: relative;
 }
+
 .FiveDayCast img {
-	height: 72px;
-	width: 72px;
+     height: 72px;
+     width: 72px;
 }
+
 .dayID {
-	-webkit-margin-before: 0.35em !important;
-	-webkit-margin-after: 0.1em !important;
+     -webkit-margin-before: 0.35em !important;
+     -webkit-margin-after: 0.1em !important;
 }
-.dateID { 
-	font-size: 14px;
-	-webkit-margin-before: 0.1em !important;
-	-webkit-margin-after: 0.1em !important;
-	
+
+.dateID {
+     font-size: 14px;
+     -webkit-margin-before: 0.1em !important;
+     -webkit-margin-after: 0.1em !important;
 }
+
+.Hi_Low {
+     font-size: 20px;
+}
+
 #Day0, #Day2 {
-     background-color: #0099cc;
+     background-color: rgba(150, 188, 242, 0.55);
      width: 185px;
      height: 225px;
      text-align: center;
@@ -279,8 +286,9 @@ input[type=time] {
      float: left;
      position: relative;
 }
+
 #Day1, #Day3 {
-     background-color: #0099cc;
+     background-color: rgba(150, 188, 242, 0.55);
      width: 185px;
      height: 225px;
      text-align: center;
@@ -289,14 +297,16 @@ input[type=time] {
      float: left;
      position: relative;
 }
+
 #Day4 {
-     background-color: #0099cc;
+     background-color: rgba(150, 188, 242, 0.55);
      width: 185px;
      height: 225px;
      text-align: center;
      float: left;
      position: relative;
 }
+
 .POP:before {
      display: inline-block;
      width: 15px;
