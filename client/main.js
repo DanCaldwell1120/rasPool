@@ -383,6 +383,7 @@ Template.StatusInfo.helpers({
 //***************************************
 
 const fileName = '/static/poolPic.jpg';
+const fileNameSmall = '/static/poolPicSmall.jpg';
 
 Template.poolPic.onRendered(() => {
      ImageL.find().observeChanges({
@@ -391,6 +392,7 @@ Template.poolPic.onRendered(() => {
                // the '?t=' + new Date().valueOf() code keeps the same URL but prevents your browser
                // from just keeping a cached version.
                $('img#poolimg').prop('src', fileName + '?t=' + new Date().valueOf());
+               $('img#smallPoolimg').prop('src', fileNameSmall + '?t=' + new Date().valueOf());
           }
      });
 });
@@ -398,6 +400,9 @@ Template.poolPic.onRendered(() => {
 Template.poolPic.helpers({
      'fileName': () => {
           return fileName;
+     },
+     'smallFileName': () => {
+          return fileNameSmall;
      }
 });
 

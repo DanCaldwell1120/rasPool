@@ -10,34 +10,33 @@
           {{> Title}}
      </div>
      {{#if currentUser}}
-          <div class="RecircPumpContainer">
-               {{> RecircPump}}
-          </div>
+     <div class="RecircPumpContainer">
+          {{> RecircPump}}
+     </div>
 
-          <div class="BoosterPumpContainer">
-               {{> BoosterPump}}
-          </div>
+     <div class="BoosterPumpContainer">
+          {{> BoosterPump}}
+     </div>
 
-          <div class="AddWaterContainer">
-               {{> AddWater}}
-          </div>
-          <div class="PoolLightContainer">
-               {{> PoolLight}}
-          </div>
+     <div class="AddWaterContainer">
+          {{> AddWater}}
+     </div>
+     <div class="PoolLightContainer">
+          {{> PoolLight}}
+     </div>
 
-          <div class="SaltCell">
-               {{> SaltCell}}
-          </div>
+     <div class="SaltCell">
+          {{> SaltCell}}
+     </div>
 
-          <div class="StatusInfoContainer">
-               {{> StatusInfo}}
-          </div>
+     <div class="StatusInfoContainer">
+          {{> StatusInfo}}
+     </div>
 
-          <div class="ForecastContainer">
-               {{> Forecast}}
-          </div>
-     {{/if}}
-     {{> poolPic}}
+     <div class="ForecastContainer">
+          {{> Forecast}}
+     </div>
+     {{/if}} {{> poolPic}}
 
 </body>
 
@@ -125,8 +124,9 @@
 <template name="poolPic">
      <div class="PoolPicContainer">
           <div class="magnifier" style="width: 937px; height: 702px;">
+               <img id="smallPoolimg" src="{{smallFileName}}" class="magsmall" />
                <div class="maglens" style="width: 175px; height: 175px; border: hidden; border-radius: 50%;">
-                    <img id="poolimg" src="{{fileName}}" class="maglarge" style="width: 3840px; height: 2160px;"/>
+                    <img id="poolimg" src="{{fileName}}" class="maglarge" style="width: 2592px; height: 1944px"/>
                </div>
           </div>
      </div>
