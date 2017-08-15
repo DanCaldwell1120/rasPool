@@ -12,4 +12,6 @@ convert image.jpg -pointsize 64 \
 	-fill white -stroke black -strokewidth 1 -annotate +2380+1920 $HOUR \
 poolPic.jpg
 
-scp poolPic.jpg meteorjs@192.168.57.192:/var/www/meteor/
+convert -resize 937x702 "poolPic.jpg" "poolPicSmall.jpg"
+
+scp poolPic.jpg poolPicSmall.jpg meteorjs@192.168.57.192:/var/www/meteor/
