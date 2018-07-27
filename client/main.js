@@ -1,9 +1,5 @@
-import {
-     Template
-} from 'meteor/templating';
-import {
-     ReactiveVar
-} from 'meteor/reactive-var';
+import { Template } from 'meteor/templating';
+import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
 
@@ -29,14 +25,12 @@ Accounts.config({
 
 Template.Title.helpers({
      currentTime() {
-          var ST = RasPool.find({
-               Component: "systemTime"
-          }).fetch();
+          var ST = RasPool.find({Component: "systemTime"}).fetch();
           var date = ST[0].currentTime;
           var begun = moment(date).format('MMMM Do YYYY, h:mm A');
 
           return begun;
-     }
+  }
 });
 
 //***************************************
@@ -47,9 +41,7 @@ Template.Title.helpers({
 
 Template.RecircPump.onCreated(function RecircPumpOnCreated() {
      // Pump is Off
-     var RP = RasPool.find({
-          Component: "RecircPump"
-     }).fetch();
+     var RP = RasPool.find({Component: "RecircPump"}).fetch();
      $('#js-StartTime').val("09:00");
      $('#js-StopTime').val("21:00");
 
@@ -57,21 +49,15 @@ Template.RecircPump.onCreated(function RecircPumpOnCreated() {
 
 Template.RecircPump.helpers({
      Status() {
-          var RP = RasPool.find({
-               Component: "RecircPump"
-          }).fetch();
+          var RP = RasPool.find({Component: "RecircPump"}).fetch();
           return RP[0].Status;
      },
      StartTime() {
-          var RP = RasPool.find({
-               Component: "RecircPump"
-          }).fetch();
+          var RP = RasPool.find({Component: "RecircPump"}).fetch();
           return RP[0].StartTime;
      },
      StopTime() {
-          var RP = RasPool.find({
-               Component: "RecircPump"
-          }).fetch();
+          var RP = RasPool.find({Component: "RecircPump"}).fetch();
           return RP[0].StopTime;
      },
 });
@@ -87,33 +73,23 @@ Template.RecircPump.events({
      },
      'blur input#js-StartTime' (event, instance) {
           // Update Start Time
-          var RP = RasPool.find({
-               Component: "RecircPump"
-          }).fetch();
+          var RP = RasPool.find({Component: "RecircPump"}).fetch();
           var RPid = RP[0]._id;
 
-          RasPool.update({
-               _id: RPid
-          }, {
-               $set: {
-                    StartTime: $('#js-StartTime').val()
-               }
-          }, );
+          RasPool.update(
+		{_id: RPid},
+		{$set: {StartTime: $('#js-StartTime').val()}},
+	);
      },
      'blur input#js-StopTime' (event, instance) {
           // Update Start Time
-          var RP = RasPool.find({
-               Component: "RecircPump"
-          }).fetch();
+          var RP = RasPool.find({Component: "RecircPump"}).fetch();
           var RPid = RP[0]._id;
 
-          RasPool.update({
-               _id: RPid
-          }, {
-               $set: {
-                    StopTime: $('#js-StopTime').val()
-               }
-          }, );
+          RasPool.update(
+		{_id: RPid},
+		{$set: {StopTime: $('#js-StopTime').val()}},
+	);
      },
 });
 
@@ -130,16 +106,12 @@ Template.BoosterPump.onCreated(function BoosterPumpOnCreated() {
 
 Template.BoosterPump.helpers({
      Status() {
-          var BP = RasPool.find({
-               Component: "BoosterPump"
-          }).fetch();
+          var BP = RasPool.find({Component: "BoosterPump"}).fetch();
           return BP[0].Status;
      },
 
      TimeRemaining() {
-          var BP = RasPool.find({
-               Component: "BoosterPump"
-          }).fetch();
+          var BP = RasPool.find({Component: "BoosterPump"}).fetch();
 
           return BP[0].TimeRemaining;
      },
@@ -151,6 +123,16 @@ Template.BoosterPump.events({
      },
      'click button#js-Stop' (event, instance) {
           Meteor.call('stopBoosterPump');
+     },
+     'blur input#js-RunTime' (event, instance) {
+          // Update Booster Pump Run Time
+          var RP = RasPool.find({Component: "BoosterPump"}).fetch();
+          var RPid = RP[0]._id;
+
+          RasPool.update(
+		{_id: RPid},
+		{$set: {RunTime: $('#js-RunTime').val()}},
+	);
      },
 });
 
@@ -167,9 +149,7 @@ Template.PoolLight.onCreated(function PoolLightOnCreated() {
 
 Template.PoolLight.helpers({
      Status() {
-          var PL = RasPool.find({
-               Component: "PoolLight"
-          }).fetch();
+          var PL = RasPool.find({Component: "PoolLight"}).fetch();
           return PL[0].Status;
      },
 });
@@ -196,16 +176,12 @@ Template.AddWater.onCreated(function AddWaterOnCreated() {
 
 Template.AddWater.helpers({
      Status() {
-          var AW = RasPool.find({
-               Component: "WaterValve"
-          }).fetch();
+          var AW = RasPool.find({Component: "WaterValve"}).fetch();
           return AW[0].Status;
      },
 
      TimeRemaining() {
-          var AW = RasPool.find({
-               Component: "WaterValve"
-          }).fetch();
+          var AW = RasPool.find({Component: "WaterValve"}).fetch();
 
           var tr = AW[0].TimeRemaining;
           return tr;
@@ -373,6 +349,12 @@ Template.StatusInfo.helpers({
                Component: "systemTime"
           }).fetch();
           return ST[0].waterTemp;
+     },
+     fltrPress() {
+          var ST = RasPool.find({
+	       Component: "systemTime"
+	  }).fetch();
+	  return ST[0].filterPressure;
      }
 });
 

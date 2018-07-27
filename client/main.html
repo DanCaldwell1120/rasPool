@@ -2,6 +2,7 @@
      <title>rasPool</title>
      <link type="text/css" href="magnifier.css" rel="stylesheet">
      <script type="text/javascript" src="magnifier.js"></script>
+     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
 </head>
 
 <body>
@@ -91,6 +92,7 @@
 </template>
 
 <template name="SaltCell">
+<!--
      <h1>Salt Cell</h1>
      <div class="SaltCellSuperCl">
           <p>Super Chlorinate</p>
@@ -108,6 +110,7 @@
           <input type="number" value="50" id="js-Percent" name="Percent">
           Percent
      </div>
+-->
 </template>
 
 <template name="StatusInfo">
@@ -115,10 +118,11 @@
           Status
      </h1>
      <p>Pool Temp:
-          {{wtrTemp}}F</p>
+          {{wtrTemp}} F</p>
      <p>Air Temp:
-          {{curTemp}}F</p>
-     <p>Salt Level: ----ppm</p>
+          {{curTemp}} F</p>
+     <p>Filter PSI: 
+	  {{fltrPress}} psig</p>
 </template>
 
 <template name="poolPic">
@@ -131,6 +135,14 @@
           </div>
      </div>
 </template>
+
+<!--
+<template name="poolPic">
+     <div class="PoolPicContainer">
+          <img id="cctv" src="http://192.168.57.26:8081/" style="width: 937px; height: 702px"/>
+     </div>
+</template>
+-->
 
 <template name="Forecast">
      <div class="FiveDayCast">

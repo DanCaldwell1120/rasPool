@@ -117,11 +117,13 @@ p {
 .SaltCell {
      width: 470px;
      height: 150px;
-     background: #96b6ea;
+     background-color: rgba(150, 188, 242, 0);
+/*     background: #96b6ea; */
      margin: 2px;
      padding: 5px 5px 10px;
      border-color: black;
-     border-style: solid;
+/*     border-style: solid; */
+     border-style: none;
      float: left;
      position: relative;
 }

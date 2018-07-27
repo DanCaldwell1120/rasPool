@@ -4,11 +4,15 @@ import {
 var fs = Npm.require('fs');
 var Fiber = Npm.require('fibers');
 var ds18b20 = require('ds18b20');
+// var i2c = require('i2c');
 
-const rpGPIO = 3;
-const bpGPIO = 5;
-const plGPIO = 7;
-const awGPIO = 11;
+// Pin 3 I2C SDA for Filter Pressure ADS1115
+// Pin 5 I2C SCL for Finter Pressure ADS1115
+const plGPIO = 7;   // GPIO 4
+const awGPIO = 11;  // GPIO 17
+const rpGPIO = 15 // GPIO 22
+const bpGPIO = 19 // GPIO 10
+
 
 const onGPIO = 0;
 const offGPIO = 1;
@@ -88,7 +92,8 @@ Meteor.startup(function() {
                Component: 'systemTime',
                currentTime: new Date(),
                currentTemp: 75,
-               waterTemp: 75
+               waterTemp: 75,
+               filterPressure: 99
           });
      }
 
@@ -334,10 +339,24 @@ function TimeToMinutesPastMidnight(Time) {
      return minutes;
 }
 
+////////////////////////////////////////////////////////////////////////////
+//
+//    This is the main update section that runs every 500 milliseconds
+//    The following variables are updated:
+//		- System Time
+//		- Water Temperature
+//    The following timers are checked:
+//		- Recirc Pump start and stop times
+//		- Booster Pump run time
+//		- Add Water Valve run time
+//
+/////////////////////////////////////////////////////////////////////////////
+
+
 Meteor.setInterval(function() {
      //
      // Update system time variable in RasPool Collection
-     //
+     //  
 
      var ST = RasPool.find({
           Component: "systemTime"
@@ -352,6 +371,37 @@ Meteor.setInterval(function() {
                currentTime: date
           }
      }, );
+
+
+
+
+
+
+     //
+     // Update the DE Filter pressure
+     // 
+
+//     Commented out i2c lines for debugging *** also commented out i2c at top of file
+
+//     var address = 0x48;
+//     var wire = new i2c (address, {device : '/dev/i2c-1'});
+
+//     wire.writeBytes(0x01, [0xC0, 0x83], function (){});
+ 
+//     wire.readBytes(0x00, 2, function (err, res) {
+//         console.log(res);
+//     });
+    
+
+//     RasPool.update({
+//          _id: STid
+//     }, {
+//          $set: {
+//               filterPressure: _fltrPress
+//          }
+//     }, );
+
+
 
      //
      // Update water temp variable in RasPool Collection
@@ -518,7 +568,11 @@ Meteor.setInterval(function() {
 
 }, '500');
 
-
+////////////////////////////////////////////////////////////
+//
+// Updates Air Temperature every 5 seconds from API call 
+//
+///////////////////////////////////////////////////////////
 
 Meteor.setInterval(function() {
 
@@ -526,10 +580,6 @@ Meteor.setInterval(function() {
           Component: "systemTime"
      }).fetch();
      var STid = ST[0]._id;
-
-     //    
-     // Update current temp variable in RasPool Collection
-     //
 
      var openweatherAPI = Meteor.settings.openweathermap;
      var url = "http://api.openweathermap.org/data/2.5/weather?zip=23322,us&APPID=" + openweatherAPI + "&units=imperial";
@@ -554,6 +604,11 @@ Meteor.setInterval(function() {
 
 }, '5000');
 
+/////////////////////////////////////////////////////////////
+//
+// Updates Weather forecast every 10 minutes from API call
+//
+////////////////////////////////////////////////////////////
 
 Meteor.setInterval(function() {
 

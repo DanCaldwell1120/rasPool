@@ -14,8 +14,7 @@
 .maglens {
      position: absolute;
      overflow: hidden;
-     width: 150px;
-     height: 150px;
+     cursor: none;
 }
 
 
@@ -32,4 +31,5 @@
 .maglarge {
      position: absolute;
      border-style: none
+     cursor: cell;
 }
