@@ -4,7 +4,7 @@ downloaded and saved to sd card the full raspian operating system from raspberry
 
 bootup with hdmi output and wireless keyboard to setup wifi network.  While using GUI, enable ssh
 
-install meteor using the most recent stable build for ARM from github
+install meteor using the most recent stable build for ARM from github (https://github.com/4commerce-technologies-AG/meteor)
 -	check meteor version which installs many dependencies
 
 create a meteor project
